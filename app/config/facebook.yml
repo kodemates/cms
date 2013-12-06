@@ -1,7 +1,7 @@
 fos_facebook:
     alias:  facebook
-    app_id: 564801900260992
-    secret: 5dd5388408f93e0eb806c99597c0481c
+    app_id: %facebook_app_id%
+    secret: %facebook_secret%
     cookie: true
     permissions: [email, user_birthday, user_location]
 
