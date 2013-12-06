@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: facebook.yml }
+    - { resource: fos_user.yml }
 
 framework:
     #esi:             ~
