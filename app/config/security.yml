@@ -14,10 +14,12 @@ security:
                     admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
-        secured_area:
-            pattern:    ^/admin
-            http_basic:
-                realm: "Secured Demo Area"
+        main:
+            pattern:    ^/admin/.*
+            stateless:  true
+            anonymous:  false
+            http_basic: ~
+            security : true
 
         
         public:
