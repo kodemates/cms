@@ -11,7 +11,7 @@ module.exports = function(grunt) {
         main: {
                 files: [
                     // includes files within path and its sub-directories
-                    {expand: true, flatten: true, filter: 'isFile', src: ['vendor/zurb/foundation/js/**'], dest: 'web/js/generated/'}
+                    {expand: true, flatten: true, filter: 'isFile', src: ['web/vendor/foundation/js/**'], dest: 'web/js/generated/'}
                 ]
         }
       },
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
             options: {
                 targetDir: './web/vendors',
                 install: true,
-                verbose: false,
+                verbose: true,
                 cleanTargetDir: false,
                 cleanBowerDir: false,
                 bowerOptions: {}

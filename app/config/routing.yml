@@ -2,7 +2,3 @@ cms_frontend:
     resource: "@CMSFrontendBundle/Resources/config/routing.yml"
     prefix:   /
 
-cms_frontend_secured:
-    resource: "@CMSFrontendBundle/Resources/config/routing.yml"
-    prefix:   /admin
-
