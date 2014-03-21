@@ -22,7 +22,8 @@
 	"sonata-project/doctrine-orm-admin-bundle": "2.2.*@dev",
 	"sonata-project/admin-bundle" : "2.2.*@dev",
 	"friendsofsymfony/facebook-bundle": "1.2.*@dev",
-	"friendsofsymfony/user-bundle": "2.0.*@dev"
+	"friendsofsymfony/user-bundle": "2.0.*@dev",
+	"midgard/createphp": "0.9.*@dev"
     },
     "scripts": {
         "post-install-cmd": [

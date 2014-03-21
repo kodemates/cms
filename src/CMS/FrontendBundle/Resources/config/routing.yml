@@ -2,6 +2,13 @@ cms_frontend_homepage:
     pattern:  /
     defaults: { _controller: CMSFrontendBundle:Default:index }
 
+cms_frontend_admin_homepage:
+    pattern:  /admin/
+    defaults: { _controller: CMSFrontendBundle:Default:index }
+
+cms_frontend_admin_content_show:
+    pattern:  /admin/{id}
+    defaults: { _controller: CMSFrontendBundle:Default:show }
 
 cms_frontend_content_show:
     pattern:  /contents/{id}

@@ -14,3 +14,6 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    facebook_app_id: 123456780
+    facebook_secret: cafecafecafecafecafecafecafecf

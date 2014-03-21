@@ -17,6 +17,7 @@
   "directory": "web/vendors",
   "dependencies": {
     "requirejs": "~2.1.9",
-    "foundation": "zurb/bower-foundation"
+    "foundation": "zurb/bower-foundation",
+    "create" : "master"
   }
 }
