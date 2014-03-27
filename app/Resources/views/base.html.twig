@@ -7,6 +7,8 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="{{ asset('css/generated/normalize.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/generated/theme.css') }}" />
+        <link rel="stylesheet" href="{{ asset('vendor/aloha/aloha/css/aloha.css') }}" />
+        <!--<link rel="stylesheet" href="http://cdn.aloha-editor.org/latest/css/aloha.css" />-->
         <link rel="stylesheet" href="{{ asset('vendor/create/themes/create-ui/css/create-ui.css') }}" />
 
     </head>
@@ -25,7 +27,6 @@
 	<script src="{{ asset('vendor/underscore/underscore.js') }}"></script>
 	<script src="{{ asset('vendor/backbone/backbone-min.js') }}"></script>
 	<script src="{{ asset('vendor/vie/dist/vie.js') }}"></script>
-	<script src="{{ asset('vendor/hallo/dist/hallo.js') }}"></script>
 	<script src="{{ asset('vendor/rangy/rangy-core.js') }}"></script>
 
         <!-- script>
@@ -50,12 +51,32 @@
         <script src="{{ asset('js/generated/foundation.interchange.js') }}"></script>
 	    <script src="{{ asset('vendor/requirejs/require.js') }}"></script>
 	    <script src="{{ asset('vendor/create/dist/create.js') }}"></script>
+      <script src="{{ asset('vendor/aloha/aloha/lib/aloha-full.min.js') }}"></script>
+        <script> var Aloha = window.Aloha || ( window.Aloha = {} ); Aloha.settings = { locale: 'en', sidebar: { disabled: true }, placeholder: { '*': 'Add content here' }, repositories: { linklist: { data: [ { name: 'CreateJS Website', url:'http://createjs.org', type:'website' }, { name: 'CreateJS on Github', url:'https://github.com/bergie/create', type:'website' }, { name: 'Aloha Developers Wiki', url:'https://github.com/alohaeditor/Aloha-Editor/wiki', type:'website' }, { name: 'Aloha Editor - The HTML5 Editor', url:'http://aloha-editor.org', type:'website' }, { name: 'Aloha Editor Demos', url:'http://aloha-editor.org/demos.php', type:'website' }, { name: 'Aloha Editor Logo', url:'http://aloha-editor.org/logo/Aloha%20Editor%20HTML5%20contenteditable%20transparent%20512.png', type:'image' } ] } }, plugins: { format: { config: [  'b', 'i', 'p', 'sub', 'sup', 'del', 'title', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'removeFormat' ] } } } </script> <!-- Include Aloha Editor and load desired plugins -->
+        <script src='http://cdn.aloha-editor.org/latest/lib/aloha.js'  data-aloha-plugins='common/format, common/table, common/list, common/link, common/block, common/undo, common/contenthandler, common/paste, common/commands, common/abbr'></script>
 
         <script>
-            $(document).foundation();
+           // $(document).foundation();
             jQuery(document).ready(function() {
+                // Instantiate Create
                 jQuery('body').midgardCreate({
-                    url: function() { return '/some/backend/url'; }
+                    url: function() {
+                        return 'javascript:false;';
+                    },
+                    // Use Aloha for all text editing
+                    editorWidgets: {
+                        'default': 'aloha'
+                    },
+                    editorOptions: {
+                        aloha: {
+                            widget: 'alohaWidget'
+                        }
+                    },
+                    collectionWidgets: {
+                        'default': null,
+                        'feature': 'midgardCollectionAdd'
+                    },
+                    stanbolUrl: 'http://dev.iks-project.eu:8081'
                 });
             });
         </script>
