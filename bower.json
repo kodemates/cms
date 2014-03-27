@@ -19,7 +19,6 @@
     "requirejs": "~2.1.9",
     "foundation": "zurb/bower-foundation",
     "create" : "master",
-    "Font-Awesome": "FortAwesome/Font-Awesome",
     "aloha": "http://aloha-editor.org/builds/stable/alohaeditor-0.25.3.zip"
   }
 }
