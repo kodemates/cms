@@ -7,6 +7,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="{{ asset('css/generated/normalize.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/generated/theme.css') }}" />
+        <link rel="stylesheet" href="{{ asset('web/vendor/jquery-ui/themes/base/jquery-ui.css') }}" />
     </head>
     <body>
 
@@ -46,18 +47,17 @@
         <!-- script src="{{ asset('js/generated/foundation.tooltips.js') }}"></script -->
         <script src="{{ asset('js/generated/foundation.topbar.js') }}"></script>
         <script src="{{ asset('js/generated/foundation.interchange.js') }}"></script>
-	<script src="{{ asset('vendor/requirejs/require.js') }}"></script>
-	<script src="{{ asset('vendor/create/dist/create.js') }}"></script>
+	    <script src="{{ asset('vendor/requirejs/require.js') }}"></script>
+	    <script src="{{ asset('vendor/create/dist/create.js') }}"></script>
+
         <script>
             $(document).foundation();
-jQuery(document).ready(function() {
-  jQuery('body').midgardCreate({
-    url: function() { return '/some/backend/url'; }
-  });
-});
+            jQuery(document).ready(function() {
+                jQuery('body').midgardCreate({
+                    url: function() { return '/some/backend/url'; }
+                });
+            });
         </script>
-
-
         {% block javascripts %}
 
         {% endblock %}
