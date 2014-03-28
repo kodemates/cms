@@ -34,7 +34,7 @@ Make sure you have the **Requirements** listed above installed.
  
    4.1.  Install node dependencies `npm install`.
 
-   4.2.  Install bower dependencies: `grunt bower:install`.
+   4.2.  Install bower dependencies: `grunt install`.
    
    4.3.  Run all tasks `grunt`.
 

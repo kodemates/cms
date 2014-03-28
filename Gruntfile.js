@@ -54,7 +54,9 @@ module.exports = function(grunt) {
       }
     });
 
-    grunt.registerTask('test', ['sass:main', 'copy:main']);
+    grunt.registerTask('install', ['build', 'bower:install' ]);
+    grunt.registerTask('build', ['sass:main', 'copy:main']);
 
-    grunt.registerTask('default', ['test']);
+    grunt.registerTask('default', ['build']);
+
 };
