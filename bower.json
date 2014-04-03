@@ -18,7 +18,10 @@
   "dependencies": {
     "requirejs": "~2.1.9",
     "foundation": "zurb/bower-foundation",
-    "create" : "master",
+    "create": "master",
     "aloha": "http://aloha-editor.org/builds/stable/alohaeditor-0.25.3.zip"
+  },
+  "resolutions": {
+    "jquery": ">= 2.1.0"
   }
 }
