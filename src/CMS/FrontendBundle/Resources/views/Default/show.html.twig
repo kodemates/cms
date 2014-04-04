@@ -2,3 +2,11 @@
 {% block body %}
 	{{ entity | raw }}
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+    CMSManager.urls.content_create = '{{ path('cms_frontend_content_put', {id: content.id}) }}';
+    CMSManager.editContent();
+    </script>
+{% endblock %}
