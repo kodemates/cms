@@ -1,52 +1,32 @@
-<script src="{{ asset('js/generated/custom.modernizr.js') }}"></script>
+<script script="text/javascript">
+    window.__loadConfigs = function(){
+        CMSManager.urls = {
+            content_create: '{{ path('cms_frontend_content_put', {id: 1}) }}'
+        };
+        $(document).foundation();
+    }
+</script>
 
-<script src="{{ asset('vendor/jquery/dist/jquery.js') }}"></script>
-<script src="{{ asset('vendor/jquery-ui/ui/jquery-ui.js') }}"></script>
-<script src="{{ asset('vendor/underscore/underscore.js') }}"></script>
-<script src="{{ asset('vendor/backbone/backbone-min.js') }}"></script>
-<script src="{{ asset('vendor/vie/dist/vie.js') }}"></script>
-<script src="{{ asset('vendor/rangy/rangy-core.js') }}"></script>
-
-<!-- script>
-            document.write('<script src=' +
-                    ('__proto__' in {} ? '{{ asset('js/generated/zepto') }}' : '{{ asset('js/generated/jquery') }}') +
-                    '.js><\/script>')
-        </script -->
-<script src="{{ asset('js/generated/foundation.js') }}"></script>
-<!-- script src="{{ asset('js/generated/foundation.alerts.js') }}"></script -->
-<script src="{{ asset('js/generated/foundation.clearing.js') }}"></script>
-<!-- script src="{{ asset('js/generated/foundation.cookie.js') }}"></script -->
-<script src="{{ asset('js/generated/foundation.dropdown.js') }}"></script>
-<!-- script src="{{ asset('js/generated/foundation.forms.js') }}"></script -->
-<script src="{{ asset('js/generated/foundation.joyride.js') }}"></script>
-<script src="{{ asset('js/generated/foundation.magellan.js') }}"></script>
-<script src="{{ asset('js/generated/foundation.orbit.js') }}"></script>
-<!-- script src="{{ asset('js/generated/foundation.placeholder.js') }}"></script -->
-<script src="{{ asset('js/generated/foundation.reveal.js') }}"></script>
-<!-- script src="{{ asset('js/generated/foundation.section.js') }}"></script -->
-<!-- script src="{{ asset('js/generated/foundation.tooltips.js') }}"></script -->
-<script src="{{ asset('js/generated/foundation.topbar.js') }}"></script>
-<script src="{{ asset('js/generated/foundation.interchange.js') }}"></script>
-<script src="{{ asset('vendor/requirejs/require.js') }}"></script>
-<script src="{{ asset('vendor/create/dist/create.js') }}"></script>
-
+<script type="text/javascript" src="{{ asset('js/require-all.js') }}"></script>
 <script type="text/javascript" src="{{ asset('vendor/aloha/aloha/lib/aloha-full.js') }}"
-                data-aloha-plugins="common/ui,
-                                       common/format,
-                                       common/table,
-                                       common/list,
-                                       common/link,
-                                       common/highlighteditables,
-                                       common/block,
-                                       common/undo,
-                                       common/image,
-                                       common/contenthandler,
-                                       common/paste,
-                                       common/commands,
-                                       common/abbr"></script>
+        data-aloha-plugins="common/ui,
+                            common/format,
+                            common/table,
+                            common/list,
+                            common/link,
+                            common/highlighteditables,
+                            common/block,
+                            common/undo,
+                            common/image,
+                            common/contenthandler,
+                            common/paste,
+                            common/commands,
+                            common/abbr">
+</script>
 
-<script>
+<script type="text/javascript">
     var Aloha = window.Aloha || ( window.Aloha = {} );
 </script> <!-- Include Aloha Editor and load desired plugins -->
 
-<script src="{{ asset('js/cms.js') }}"></script>
+
+

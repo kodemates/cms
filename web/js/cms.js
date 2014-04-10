@@ -1,8 +1,11 @@
 (function($){
     function Manager(){
-        var self = this;
+        var obj = {
+            urls: {}
+        };
 
-        function editContent(){
+        obj.editContent = function(){
+            var self = this;
             $('body').midgardCreate({
                 url: function() {
                     return self.urls.content_create;
@@ -18,16 +21,15 @@
                 collectionWidgets: {
                     'default': null,
                     'feature': 'midgardCollectionAdd'
-                },
-                stanbolUrl: 'http://dev.iks-project.eu:8081'
+                }
             });
         }
 
-        return {
-            urls: {},
-            editContent: editContent
-        };
+        return obj;
     };
 
     window.CMSManager = Manager();
+    if('function' == typeof __loadConfigs) __loadConfigs();
+    if('function' == typeof __init) __init();
+
 })(jQuery);

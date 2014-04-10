@@ -17,5 +17,6 @@ cms_frontend_content_show:
 
 cms_frontend_content_put:
     pattern:  /contents/{id}
-    defaults: { _controller: CMSFrontendBundle:Default:show }
-    methods: ['put']
+    defaults: { _controller: CMSFrontendBundle:Default:put }
+    methods: ['put', 'post']
+

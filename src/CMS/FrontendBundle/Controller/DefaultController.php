@@ -3,6 +3,7 @@
 namespace CMS\FrontendBundle\Controller;
 
 use CMS\FrontendBundle\Entity\Content;
+use Midgard\CreatePHP\RestService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
@@ -15,61 +16,73 @@ class DefaultController extends Controller
     }
 
     public function putAction($id){
+        $content = $this->getDoctrine()->getRepository('CMSFrontendBundle:Content')
+            ->find($id);
 
+        $config = $this->getConfig();
+
+        $received_data = json_decode(file_get_contents("php://input"), true);
+        $loader = new \Midgard\CreatePHP\ArrayLoader($config);
+        $doctrineRegistry = $this->get('doctrine');
+        $mapper = new \Midgard\CreatePHP\Mapper\DoctrineOrmMapper($typeMap=array(
+            'http://localhost:8000/contents' => 'CMS\\FrontendBundle\\Entity\\Content'
+        ), $doctrineRegistry, $name=null);
+        $manager = $loader->getManager($mapper);
+        $type = $manager->getType('CMS\\FrontendBundle\\Entity\\Content');
+        $service = $manager->getRestHandler($received_data);
+        $result = $service->run($received_data, $type, 15, RestService::HTTP_POST);
     }
 
     public function showAction($id){
         $content = $this->getDoctrine()->getRepository('CMSFrontendBundle:Content')
             ->find($id);
 
-        $config = array
+        $config = $this->getConfig();
+
+        $doctrineRegistry = $this->get('doctrine');
+        $mapper = new \Midgard\CreatePHP\Mapper\DoctrineOrmMapper($typeMap=array(), $doctrineRegistry, $name=null);
+        $loader = new \Midgard\CreatePHP\ArrayLoader($config);
+        $manager = $loader->getManager($mapper);
+        $entity = $manager->getEntity($content);
+///        var_dump($entity->__toString()); die;
+
+        return $this->render('CMSFrontendBundle:Default:show.html.twig', array('content' => $content, 'entity' => $entity));
+    }
+
+
+    function getConfig(){
+        //https://github.com/flack/createphp/blob/master/documentation/tutorial.md
+        return array
         (
             'workflows' => array(
-                //'delete' => 'my_delete_workflow_class'
             ),
             'types' => array(
-            'CMS\\FrontendBundle\\Entity\\Content' => array(
-                'vocabularies' => array(
-                       'dcterms' => 'http://purl.org/dc/terms/',
-                       'sioc' => 'http://rdfs.org/sioc/ns#'
+                'CMS\\FrontendBundle\\Entity\\Content' => array(
+                    'config' => array(
+                        'storage' => 'CMS\\FrontendBundle\\Entity\\Content',
+                    ),
+                    'typeof' => 'content:contents', // Vocabulary:
+                    'vocabularies' => array(
+                        'content' => 'http://localhost:8000/'
                     ),
                     'children' => array(
                         'title' => array(
-                            'property' => 'dcterms:title'
+                            'property' => 'content:title'
                         ),
                         'body' => array(
-                            'property' => 'sioc:content'
+                            'property' => 'content:body'
                         ),
-                    ),
-            ),
-                'My\\Blog\\Model\\Article' => array(
-                    'config' => array(
-                        'storage' => 'some_db_table',
-                    ),
-                    'typeof' => 'sioc:Blog',
-                    'vocabularies' => array(
-                       'dcterms' => 'http://purl.org/dc/terms/',
-                       'sioc' => 'http://rdfs.org/sioc/ns#'
-                    ),
-                    'children' => array(
-                        'title' => array(
-                            'property' => 'dcterms:title'
+
+                        'author' => array(
+                            'property' => 'content:author'
                         ),
-                        'content' => array(
-                            'property' => 'sioc:content'
+
+                        'featured' => array(
+                            'property' => 'content:featured'
                         ),
                     ),
                 ),
             )
         );
-
-        $object = $content;
-        $doctrineRegistry = $this->get('doctrine');
-        $mapper = new \Midgard\CreatePHP\Mapper\DoctrineOrmMapper($typeMap=array(), $doctrineRegistry, $name=null);
-        $loader = new \Midgard\CreatePHP\ArrayLoader($config);
-        $manager = $loader->getManager($mapper);
-        $entity = $manager->getEntity($object);
-
-        return $this->render('CMSFrontendBundle:Default:show.html.twig', array('content' => $content, 'entity' => $entity));
     }
 }

@@ -4,9 +4,9 @@
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
     <script type="text/javascript">
-    CMSManager.urls.content_create = '{{ path('cms_frontend_content_put', {id: content.id}) }}';
-    CMSManager.editContent();
+        function __init(){
+            CMSManager.editContent();
+        }
     </script>
 {% endblock %}

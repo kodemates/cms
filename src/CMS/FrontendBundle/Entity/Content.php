@@ -63,6 +63,11 @@ class Content
      */
     private $createdAt;
 
+    function __construct(){
+        $this->updatedAt = new \DateTime();
+        $this->createdAt = new \DateTime();
+    }
+
 
     /**
      * Get id

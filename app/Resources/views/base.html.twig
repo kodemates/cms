@@ -1,34 +1,22 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link rel="stylesheet" href="{{ asset('css/generated/normalize.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/generated/theme.css') }}" />
-        <link rel="stylesheet" href="{{ asset('vendor/aloha/aloha/css/aloha.css') }}" />
-        <link rel="stylesheet" href="{{ asset('vendor/create/themes/create-ui/css/create-ui.css') }}" />
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('css/generated/normalize.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/generated/theme.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/aloha/aloha/css/aloha.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/create/themes/create-ui/css/create-ui.css') }}" />
+</head>
+<body>
+{{ render(controller('CMSFrontendBundle:Menu:index')) }}
 
-    </head>
-    <body>
+{% block page_title %}{% endblock %}
+{% block body %}{% endblock %}
 
-        {{ render(controller('CMSFrontendBundle:Menu:index')) }}
-
-
-        {% block page_title %}{% endblock %}
-        {% block body %}{% endblock %}
-        {% include '::scripts.html.twig' %}
-
-        <script script="text/javascript">
-            CMSManager.urls = {
-                content_create: '#'
-            };
-            $(document).foundation();
-        </script>
-
-        {% block javascripts %}
-
-        {% endblock %}
-    </body>
+{% include '::scripts.html.twig' %}
+{% block javascripts %}{% endblock %}
+</body>
 </html>
