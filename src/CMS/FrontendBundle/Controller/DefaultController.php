@@ -2,7 +2,6 @@
 
 namespace CMS\FrontendBundle\Controller;
 
-use CMS\FrontendBundle\Entity\Content;
 use Midgard\CreatePHP\RestService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -30,7 +29,7 @@ class DefaultController extends Controller
         $manager = $loader->getManager($mapper);
         $type = $manager->getType('CMS\\FrontendBundle\\Entity\\Content');
         $service = $manager->getRestHandler($received_data);
-        $result = $service->run($received_data, $type, 15, RestService::HTTP_POST);
+        $result = $service->run($received_data, $type, null, RestService::HTTP_PUT);
     }
 
     public function showAction($id){
@@ -44,7 +43,6 @@ class DefaultController extends Controller
         $loader = new \Midgard\CreatePHP\ArrayLoader($config);
         $manager = $loader->getManager($mapper);
         $entity = $manager->getEntity($content);
-///        var_dump($entity->__toString()); die;
 
         return $this->render('CMSFrontendBundle:Default:show.html.twig', array('content' => $content, 'entity' => $entity));
     }
@@ -55,6 +53,7 @@ class DefaultController extends Controller
         return array
         (
             'workflows' => array(
+                // 'delete' => 'stdClass', @todo delete workflow
             ),
             'types' => array(
                 'CMS\\FrontendBundle\\Entity\\Content' => array(
