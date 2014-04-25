@@ -1,5 +1,5 @@
 var __all_scripts = [
-    'js/generated/custom.modernizr.js',
+    'vendor/modernizr/modernizr.js',
     'vendor/jquery/dist/jquery.js',
         'vendor/jquery-ui/ui/jquery-ui.js',
         'vendor/underscore/underscore.js',
