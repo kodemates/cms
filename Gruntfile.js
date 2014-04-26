@@ -1,12 +1,17 @@
+require('./web/js/require-all.js');
+
 module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-bower-task');
+    grunt.loadNpmTasks('grunt-contrib-concat');
 
 
     grunt.initConfig({
+      /*************************************************************
+       * Styling tasks: Foundation, Sass, css related tasks        *
+       *************************************************************/
       copy: {
         main: {
                 files: [
@@ -24,22 +29,22 @@ module.exports = function(grunt) {
             }
         }
       },
-      watch: {
-        css: {
-            files: 'scss/**/*.scss',
-            tasks: ['sass']
-        },
-        tests: {
-            files: [
-                'js/**/*.js',
-                'spec/**/*.js'
-            ],
-            tasks: 'test',
-            options: {
-                interrupt: true
-            }
-        }
+
+
+      /*************************************************************
+       * Javascripts tasks: Concat and Minification                *
+       *************************************************************/
+      concat: {
+          '.tmp/concat/js/app.js': __all_scripts
       },
+      uglify: {
+          'web/js/built-all.js': ['.tmp/concat/js/app.js']
+      },
+
+
+      /*************************************************************
+       * Package Managers: Vendor installers                       *
+       *************************************************************/
       bower: {
          install: {
             options: {
@@ -52,10 +57,11 @@ module.exports = function(grunt) {
             }
          }
       }
-    });
+    });-
 
-    grunt.registerTask('install', ['bower:install', 'build']);
     grunt.registerTask('build', ['sass:main', 'copy:main']);
+    grunt.registerTask('install', ['bower:install', 'build']);
+    
 
     grunt.registerTask('default', ['build']);
 

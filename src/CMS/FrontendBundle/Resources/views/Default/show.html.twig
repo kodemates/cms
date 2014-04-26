@@ -2,3 +2,11 @@
 {% block body %}
 	{{ entity | raw }}
 {% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        function __init(){
+            CMSManager.editContent();
+        }
+    </script>
+{% endblock %}

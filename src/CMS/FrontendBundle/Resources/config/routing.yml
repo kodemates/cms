@@ -13,3 +13,10 @@ cms_frontend_admin_content_show:
 cms_frontend_content_show:
     pattern:  /contents/{id}
     defaults: { _controller: CMSFrontendBundle:Default:show }
+    methods: ['get']
+
+cms_frontend_content_put:
+    pattern:  /contents/{id}
+    defaults: { _controller: CMSFrontendBundle:Default:put }
+    methods: ['put', 'post']
+

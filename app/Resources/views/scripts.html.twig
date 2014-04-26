@@ -1,0 +1,32 @@
+<script script="text/javascript">
+    window.__loadConfigs = function(){
+        CMSManager.urls = {
+            content_create: '{{ path('cms_frontend_content_put', {id: 1}) }}'
+        };
+        $(document).foundation();
+    }
+</script>
+
+<script type="text/javascript" src="{{ asset('js/require-all.js') }}"></script>
+<script type="text/javascript" src="{{ asset('vendor/aloha/aloha/lib/aloha-full.js') }}"
+        data-aloha-plugins="common/ui,
+                            common/format,
+                            common/table,
+                            common/list,
+                            common/link,
+                            common/highlighteditables,
+                            common/block,
+                            common/undo,
+                            common/image,
+                            common/contenthandler,
+                            common/paste,
+                            common/commands,
+                            common/abbr">
+</script>
+
+<script type="text/javascript">
+    var Aloha = window.Aloha || ( window.Aloha = {} );
+</script> <!-- Include Aloha Editor and load desired plugins -->
+
+
+
